@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.pic {
+    top: 40px;
+}
+
+.headerImg {
+    z-index: -1;
+    position: absolute;
+    width: 100vw;
+    height: 20vh;
+}
+
+.headerTitle {
+    font-size: 90px;
+    text-align: center;
+    color: yellow;
+}
+
+.brushes {
+    width: 100vw;
+    height: 4vh;
+    position: relative;
+    top: 150px;
+    background-color: mediumseagreen;
+}
+
+.titleText {
+    font-size: 32px;
+    color: white;
+    padding: 0 10px;
+}
+
+.frames {
+    width: 100vw;
+    height: 4vh;
+    position: relative;
+    top: 500px;
+    background-color: lightpink;
+}
+
+.paint {
+    width: 100vw;
+    height: 4vh;
+    position: relative;
+    top: 850px;
+    background-color: lightpink;
+}
+
+.price {
+    color: blue;
+    font-size: 16px;
+}
