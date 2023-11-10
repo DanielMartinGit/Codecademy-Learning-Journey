@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+}
+
+.mainContent {
+    background-color: blueviolet;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: purple;
+    width: 30vw;
+    height: 100vh;
+
+    min-width: 20vw;
+}
+
+#cookiesTotal {
+    color: white;
+    font-size: 32px;
+}
