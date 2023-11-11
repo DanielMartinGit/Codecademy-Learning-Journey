@@ -11,12 +11,40 @@
     transform: translate(50%, -50%); 
 }
 
+.centerText {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0); 
+}
+
 .mainContent {
     display: inline-block;
 
     background-image: url("../res/img/background.jpeg");
     width: 100vw;
     height: 100vh;
+}
+
+.sidebar  {
+    display: block;
+    margin-top: 0;
+    grid-row: 13;
+    background-color: grey;
+    width: 15vw;
+    height: 100vh;
+}
+
+.sidebar .upgradeButton {
+    width: 15vw;
+    height: 10vh;
+}
+
+.sidebar h2 {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    color: white;
 }
 
 #cookie {
@@ -28,8 +56,6 @@
 #cookiesTotal {
     color: white;
     font-size: 32px;
-
-    text-align: center;
 }
 
 #cookie:hover {
