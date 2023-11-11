@@ -4,25 +4,34 @@
     padding: 0;
 }
 
-body {
-    display: flex;
+.center {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%); 
 }
 
 .mainContent {
-    background-color: blueviolet;
+    display: inline-block;
+
+    background-image: url("../res/img/background.jpeg");
     width: 100vw;
     height: 100vh;
 }
 
-.sidebar {
-    background-color: purple;
-    width: 30vw;
-    height: 100vh;
-
-    min-width: 20vw;
+#cookie {
+    background-color: transparent;
+    border: none;
+    outline: none;
 }
 
 #cookiesTotal {
     color: white;
     font-size: 32px;
+
+    text-align: center;
+}
+
+#cookie:hover {
+    cursor: pointer;
 }

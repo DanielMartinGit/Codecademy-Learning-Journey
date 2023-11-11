@@ -1,10 +1,19 @@
 let totalCookies = 0;
 
+LoadCookiesFromLocalStorage();
 AddClickEvent();
 
-const CookieClicked = () => {
-    totalCookies++;
-    console.log(totalCookies);
+function LoadCookiesFromLocalStorage() {
+    if(!localStorage.getItem("cookies"))
+        return;
+    else 
+        totalCookies = localStorage.getItem("cookies");
+    
+    UpdateCookiesClicked();
+}
+
+function SaveCookiesToLocalStorage() {
+    localStorage.setItem("cookies", totalCookies);
 }
 
 function UpdateCookiesClicked() {
@@ -18,4 +27,9 @@ function AddClickEvent()
         CookieClicked();
         UpdateCookiesClicked();
     }, false);
+}
+
+const CookieClicked = () => {
+    totalCookies++;
+    SaveCookiesToLocalStorage();
 }
