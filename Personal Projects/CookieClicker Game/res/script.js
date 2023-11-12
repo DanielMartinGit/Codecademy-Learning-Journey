@@ -1,8 +1,11 @@
 let totalCookies = 0;
+let cookieMultiplier = 1;
+
 let twoTimesCookiesActivated = false;
 let fourTimesCookiesActivated = false;
 
 LoadCookiesFromLocalStorage();
+UpdateCookiesClicked();
 AddClickEvent();
 
 function LoadCookiesFromLocalStorage() {
@@ -10,8 +13,7 @@ function LoadCookiesFromLocalStorage() {
         return;
     else 
         totalCookies = localStorage.getItem("cookies");
-    
-    UpdateCookiesClicked();
+        UpdateCookiesClicked();
 }
 
 function SaveCookiesToLocalStorage() {
@@ -19,7 +21,7 @@ function SaveCookiesToLocalStorage() {
 }
 
 function UpdateCookiesClicked() {
-    const newText = "Cookies Clicked: " + totalCookies;
+    const newText = `Cookies Clicked: ${totalCookies}`;
     document.getElementById("cookiesTotal").textContent = newText;
 }
 
@@ -39,6 +41,7 @@ function AddClickEvent()
     document.getElementById("twoCookiesUpgrade").addEventListener('click', function() {
         if(!twoTimesCookiesActivated && totalCookies >= 200) {
             twoTimesCookiesActivated = true;
+            cookieMultiplier = 2;
             RemoveCookies(200);
             
             document.getElementById("twoCookiesUpgrade").removeEventListener('click');
@@ -48,16 +51,15 @@ function AddClickEvent()
     document.getElementById("fourCookiesUpgrade").addEventListener('click', function() {
         if(!fourTimesCookiesActivated && totalCookies >= 400) {
             fourTimesCookiesActivated = true;
+            cookieMultiplier = 4;
             RemoveCookies(400);
+
+            document.getElementById("fourCookiesUpgrade").removeEventListener('click');
         }
     }, false);
 }
 
 const CookieClicked = () => {
-    if(!twoTimesCookiesActivated)
-        totalCookies++;
-    else 
-        totalCookies += 2;
-
+    totalCookies += cookieMultiplier;
     SaveCookiesToLocalStorage();
 }
