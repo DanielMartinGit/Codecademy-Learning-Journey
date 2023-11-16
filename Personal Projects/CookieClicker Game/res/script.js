@@ -5,17 +5,16 @@ let twoTimesCookiesActivated = false;
 let fourTimesCookiesActivated = false;
 
 LoadCookiesFromLocalStorage();
-UpdateCookiesClicked();
 AddClickEvent();
 
 function LoadCookiesFromLocalStorage() 
 {
     if(!localStorage.getItem("cookies"))
         return;
-    else{
-        totalCookies = localStorage.getItem("cookies");
-        UpdateCookiesClicked();
-    }
+
+    totalCookies = localStorage.getItem("cookies");
+    console.log(totalCookies);
+    UpdateCookiesClicked();
 }
 
 function SaveCookiesToLocalStorage() 
@@ -23,7 +22,7 @@ function SaveCookiesToLocalStorage()
     localStorage.setItem("cookies", totalCookies);
 }
 
-function UpdateCookiesClicked() 
+function UpdateCookiesClicked()
 {
     const newText = `Cookies Clicked: ${totalCookies}`;
     document.getElementById("cookiesTotal").textContent = newText;
@@ -36,7 +35,7 @@ function RemoveCookies(totalCookiesToRemove)
     UpdateCookiesClicked();
 }
 
-function AddClickListener(upgradeName, upgrade, requiredCookies, newCookieMultipler)
+function PurchaseUpgrade(upgradeName, upgrade, requiredCookies, newCookieMultipler)
 {
     if(!upgrade && totalCookies >= requiredCookies)
     {
@@ -44,7 +43,7 @@ function AddClickListener(upgradeName, upgrade, requiredCookies, newCookieMultip
         cookieMultiplier = newCookieMultipler;
         RemoveCookies(requiredCookies);
         
-        document.getElementById(`${upgradeName}`).removeEventListener('click');
+        document.getElementById(upgradeName).removeEventListener('click', PurchaseUpgrade(upgradeName, upgrade, requiredCookies, newCookieMultipler), false);
     }
 }
 
@@ -56,15 +55,8 @@ function AddClickEvent()
         UpdateCookiesClicked();
     }, false);
 
-    document.getElementById("twoCookiesUpgrade").addEventListener('click', function() 
-    {
-        AddClickListener("twoCookiesUpgrade", twoTimesCookiesActivated, 200, 2);
-    }, false);
-
-    document.getElementById("fourCookiesUpgrade").addEventListener('click', function() 
-    {
-        AddClickListener("fourCookiesUpgrade", fourTimesCookiesActivated, 400, 4);
-    }, false);
+    document.getElementById("twoCookiesUpgrade").addEventListener('click', PurchaseUpgrade("twoCookiesUpgrade", twoTimesCookiesActivated, 200, 2), true);
+    document.getElementById("fourCookiesUpgrade").addEventListener('click', PurchaseUpgrade("fourCookiesUpgrade", fourTimesCookiesActivated, 400, 4), true);
 }
 
 const CookieClicked = () => 
